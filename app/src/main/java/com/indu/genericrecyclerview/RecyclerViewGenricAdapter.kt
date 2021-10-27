@@ -19,7 +19,7 @@ abstract class RecyclerViewGenricAdapter<T, VM : ViewDataBinding>(
     private val layoutId: Int,
     val bindingInterface: RecyclerCallback<VM, T>
 ) :
-    RecyclerView.Adapter<RecyclerViewGenricAdapter<T, VM>.RecyclerViewHolder11>(),
+    RecyclerView.Adapter<RecyclerViewGenricAdapter<T, VM>.RecyclerViewHolder>(),
     Filterable {
     private val totalItems: ArrayList<T> = items
 
@@ -56,13 +56,13 @@ abstract class RecyclerViewGenricAdapter<T, VM : ViewDataBinding>(
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder11 {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(layoutId, parent, false)
-        return RecyclerViewHolder11(v)
+        return RecyclerViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: RecyclerViewHolder11, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val item = items[position]
         holder.itemView.setTag(position)
         holder.bindData(item, position)
@@ -77,14 +77,7 @@ abstract class RecyclerViewGenricAdapter<T, VM : ViewDataBinding>(
     }
 
 
-
-//    fun updateAdpater(items: ArrayList<T>) {
-//        this.items = items
-//        notifyDataSetChanged()
-//    }
-
-
-    inner class RecyclerViewHolder11(view: View?) : RecyclerView.ViewHolder(
+    inner class RecyclerViewHolder(view: View?) : RecyclerView.ViewHolder(
         view!!
     ) {
         var binding: VM?

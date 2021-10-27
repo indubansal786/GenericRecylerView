@@ -26,14 +26,10 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
 
-            //   callAdapter(recyclerView)
             callCustomdapter(recyclerView)
-
             editSearch.doOnTextChanged { text, _, _, _ ->
-              //  adapter?.filter?.filter(text)
                 adapterCustom?.filter?.filter(text)
             }
-
         }
 
 
@@ -48,9 +44,6 @@ class MainActivity : AppCompatActivity() {
         list.add("Kitkat")
 
         list.sortByDescending { it }
-
-
-
         adapter =  object : RecyclerViewGenricAdapter<String,ItemTvBinding>(
             list,
             R.layout.item_tv, object :
@@ -79,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //recyclerView.adapter = adapter
+        recyclerView.adapter = adapter
 
     }
 
@@ -91,11 +84,8 @@ class MainActivity : AppCompatActivity() {
         list.add(CustomObject("Rishu", 89))
         list.add(CustomObject("Chanchal", 5))
 
-//        list.sortByDescending { it.name }
         list.sortedWith(compareBy<CustomObject>{it.name}.thenBy { it.age })
-      //  list.sortBy { it.age }
         list.sortBy { it.age }
-
 
         adapterCustom = object : RecyclerViewGenricAdapter<CustomObject,ItemTvBinding>(
             list,
