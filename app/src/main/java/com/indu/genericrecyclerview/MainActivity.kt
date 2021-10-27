@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        adapter =  RecyclerViewGenricAdapter<String,ItemTvBinding>(
+        adapter =  object : RecyclerViewGenricAdapter<String,ItemTvBinding>(
             list,
             R.layout.item_tv, object :
                 RecyclerCallback<ItemTvBinding, String> {
@@ -63,13 +63,17 @@ class MainActivity : AppCompatActivity() {
                     }
 
                 }
-
-
-
-
             }
 
-        )
+        ){
+            override fun getItemCount(): Int {
+                return super.getItemCount()
+            }
+
+            override fun getItemId(position: Int): Long {
+                return super.getItemId(position)
+            }
+        }
 
         //recyclerView.adapter = adapter
 
@@ -89,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         list.sortBy { it.age }
 
 
-        adapterCustom = RecyclerViewGenricAdapter(
+        adapterCustom = object : RecyclerViewGenricAdapter<CustomObject,ItemTvBinding>(
             list,
             R.layout.item_tv, object :
                 RecyclerCallback<ItemTvBinding, CustomObject> {
@@ -116,7 +120,16 @@ class MainActivity : AppCompatActivity() {
                     return false
                 }
             }
-        )
+        ){
+            override fun getItemCount(): Int {
+                return super.getItemCount()
+            }
+
+            override fun getItemId(position: Int): Long {
+                return super.getItemId(position)
+            }
+        }
+
         recyclerView.adapter = adapterCustom
 
     }

@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
- class RecyclerViewGenricAdapter<T, VM : ViewDataBinding>(
+abstract class RecyclerViewGenricAdapter<T, VM : ViewDataBinding>(
     private var items: ArrayList<T>,
     private val layoutId: Int,
     val bindingInterface: RecyclerCallback<VM, T>
