@@ -10,6 +10,10 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
+/**
+ * Created by Indu Bala on 22/10/21.
+ */
+
 abstract class RecyclerViewGenricAdapter<T, VM : ViewDataBinding>(
     private var items: ArrayList<T>,
     private val layoutId: Int,

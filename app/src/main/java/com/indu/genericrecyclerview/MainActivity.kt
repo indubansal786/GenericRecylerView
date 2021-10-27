@@ -11,6 +11,10 @@ import com.indu.genericrecyclerview.databinding.ItemTvBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
+/**
+ * Created by Indu Bala on 22/10/21.
+ */
+
 class MainActivity : AppCompatActivity() {
     private var adapter: RecyclerViewGenricAdapter<String, ItemTvBinding>? = null
     private var adapterCustom: RecyclerViewGenricAdapter<CustomObject, ItemTvBinding>? = null
